@@ -1,5 +1,10 @@
 package com.goit.module9.part2;
 
+/*Дан текстовый файл file.txt, необходимо считать файл в список объектов User и создать новый файл user.json.
+Предполагаем, что каждая строка содержит одинаковое количество "колонок", разделенный пробелом.
+Пример:
+Для файла file.txt со следующим содержанием:*/
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -30,7 +35,7 @@ public class JsonTest {
         }
     }
 
-    public void readFromFileToJson(File file) throws FileNotFoundException {
+    public void readFromFileToJson(File file) throws IOException {
         List<User> users = new ArrayList<>();
         try (Scanner scanner = new Scanner(file)) {
             while (scanner.hasNextLine()) {
@@ -42,8 +47,12 @@ public class JsonTest {
             }
         }
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        File file1 = new File("user.json");
         String json = gson.toJson(users);
-        System.out.println(json);
+
+        try (FileWriter fileWriter = new FileWriter(file1)) {
+            fileWriter.write(json);
+        }
     }
 
     public class User {

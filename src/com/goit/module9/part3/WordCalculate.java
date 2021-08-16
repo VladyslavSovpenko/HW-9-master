@@ -1,7 +1,6 @@
 package com.goit.module9.part3;
 
 import java.io.*;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -41,22 +40,21 @@ public class WordCalculate {
                 }
             }
         }
-
         Object[][] doubleArray = new Object[wordMap.size()][2];
-
         Object[] keys = wordMap.keySet().toArray();
         Object[] values = wordMap.values().toArray();
-
 
         for (int i = 0; i < wordMap.size(); i++) {
             doubleArray[i][0] = keys[i];
             doubleArray[i][1] = values[i];
         }
         for (int i = 0; i < doubleArray.length; i++) {
-            System.out.println();
+
+            if (i != 0)
+                System.out.println();
+
             for (int j = 0; j < doubleArray[i].length; j++) {
                 System.out.print(doubleArray[i][j] + " ");
-
             }
         }
     }
